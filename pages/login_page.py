@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from locators import LoginPageLocators
+from pages.locators import LoginPageLocators
 from selenium import webdriver
 
 class LoginPage(BasePage):
@@ -10,8 +10,8 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        #assert self.is_element_present(*LoginPageLocators.LOGIN_LINK), "Login link is not presented"
-        assert 'login' in webdriver.Chrome().current_url, "Login word is not in current URL"
+        url = str(self.browser.current_url)
+        assert 'login' in url, f"Login word is not in current URL{url}"
 
 
     def should_be_login_form(self):
