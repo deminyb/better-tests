@@ -1,10 +1,11 @@
 from pages.base_page import BasePage
-from pages.locators import ProductPageLocators
+from pages.locators import ProductPageLocators, BasePageLocators
+
 
 class ProductPage(BasePage):
     def add_to_basket(self):
-        assert self.is_element_present(*ProductPageLocators.ADD_TO_CART_BUTTON), "No 'Add to basket' button found"
-        add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
+        assert self.is_element_present(*BasePageLocators.ADD_TO_CART_BUTTON), "No 'Add to basket' button found"
+        add_to_basket_button = self.browser.find_element(*BasePageLocators.ADD_TO_CART_BUTTON)
         add_to_basket_button.click()
 
     def check_item_name(self):
@@ -24,4 +25,3 @@ class ProductPage(BasePage):
     def should_disappear_message(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message should disappear, but it doesn't"
-
